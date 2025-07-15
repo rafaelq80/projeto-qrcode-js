@@ -6,18 +6,25 @@ import path from "path";
 import qrcode from "qrcode";
 import { fileURLToPath } from 'url';
 
+// Obtém o caminho absoluto do arquivo atual e do diretório
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Caminho absoluto para a raiz do projeto
 const projectRoot = path.resolve(__dirname, '../../../');
 
+/**
+ * Extrai o nome principal do domínio a partir de um link.
+ * Exemplo: www.uol.com.br -> uol
+ */
 function extractSiteName(link) {
+  // Lista de TLDs compostos comuns no Brasil
   const tldsCompostos = [
     "com.br", "org.br", "gov.br", "edu.br", "net.br"
     // Adicione outros TLDs compostos conforme necessário
   ];
   try {
     let urlStr = link;
+    // Adiciona protocolo se não houver
     if (!/^https?:\/\//i.test(link)) {
       urlStr = 'http://' + link;
     }
@@ -46,24 +53,31 @@ function extractSiteName(link) {
   }
 }
 
+/**
+ * Função principal para lidar com a geração e possível salvamento do QR Code
+ */
 async function handle(err, result) {
+  // Verifica se houve erro no prompt
   if (err) {
     console.log(chalk.red("Erro ao processar o prompt."));
     return;
   }
+  // Valida se o link foi informado corretamente
   if (!result.link || typeof result.link !== "string" || result.link.trim() === "") {
     console.log(chalk.red("Erro: O link para gerar o QR Code não pode ser vazio."));
     return;
   }
 
+  // Define se o QR Code será pequeno (terminal) ou normal
   const isSmall = result.type == 2;
 
+  // Gera e exibe o QR Code no terminal
   qr.generate(result.link, { small: isSmall }, (qrcodeText) => {
     console.log(chalk.green("\nQR Code gerado com sucesso:\n"));
     console.log(qrcodeText);
   });
 
-  // Perguntar se deseja salvar como imagem usando prompt
+  // Pergunta ao usuário se deseja salvar o QR Code como imagem PNG
   const promptSchemaSave = [
     {
       name: "saveImage",
@@ -75,15 +89,19 @@ async function handle(err, result) {
   ];
   const { saveImage } = await prompt.get(promptSchemaSave);
 
+  // Se o usuário escolher 's', salva o QR Code como imagem
   if (saveImage.toLowerCase() === 's') {
+    // Garante que a pasta public existe na raiz do projeto
     const publicDir = path.join(projectRoot, 'public');
     if (!fs.existsSync(publicDir)) {
       fs.mkdirSync(publicDir);
     }
+    // Monta o nome do arquivo baseado no domínio e timestamp
     const siteName = extractSiteName(result.link);
     const fileName = `qrcode_${siteName}_${Date.now()}.png`;
     const filePath = path.join(publicDir, fileName);
     try {
+      // Gera e salva o QR Code como imagem PNG
       await qrcode.toFile(filePath, result.link);
       console.log(chalk.green(`Imagem salva em: ${filePath}`));
     } catch (e) {

@@ -1,8 +1,10 @@
 import chalk from "chalk";
 import handle from "./handle.js";
 
+// Função responsável por gerar e exibir uma senha segura
 async function createPassword() {
   console.log(chalk.green("\nGerando senha..."));
+  // Gera a senha usando as regras definidas no .env
   const password = await handle();
   if (password) {
     console.log(chalk.green.bold("Senha gerada com sucesso:"));

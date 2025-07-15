@@ -1,5 +1,6 @@
 import chalk from "chalk";
 
+// Schema do prompt principal do menu
 const promptSchemaMain = [
   {
     name: "select",

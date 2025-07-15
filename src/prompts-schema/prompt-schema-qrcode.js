@@ -1,5 +1,6 @@
 import chalk from "chalk";
 
+// Schema do prompt para geração de QR Code
 const promptSchemaQRCode = [
   {
     name: "link",

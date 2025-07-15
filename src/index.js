@@ -8,12 +8,14 @@ import promptSchemaMain from "./prompts-schema/prompt-schema-main.js";
 import createQRCode from "./services/qr-code/create.js";
 import createPassword from "./services/password/create.js";
 
+// Exibe o cabeçalho do menu
 function printHeader() {
   console.clear();
   console.log(chalk.bgCyan.black.bold("\n   UTILITÁRIOS PARA E-COMMERCE   ").padEnd(40));
   console.log(chalk.gray("------------------------------------------"));
 }
 
+// Exibe as opções do menu principal
 function printMenu() {
   console.log(chalk.bold("Escolha uma opção:"));
   console.log(chalk.yellow("  [1] Gerar QR Code"));
@@ -21,6 +23,7 @@ function printMenu() {
   console.log(chalk.yellow("  [0] Sair"));
 }
 
+// Pergunta ao usuário qual opção deseja executar
 async function askMenuOption() {
   while (true) {
     try {
@@ -32,6 +35,7 @@ async function askMenuOption() {
   }
 }
 
+// Pergunta ao usuário se deseja realizar outra operação
 async function askContinue() {
   const { again } = await prompt.get([
     {
@@ -45,6 +49,7 @@ async function askContinue() {
   return again.toLowerCase() === "s";
 }
 
+// Função principal do programa
 async function main() {
   let running = true;
   let first = true;
@@ -69,5 +74,6 @@ async function main() {
   }
 }
 
+// Inicializa o prompt e executa o programa principal
 prompt.start();
 main();
