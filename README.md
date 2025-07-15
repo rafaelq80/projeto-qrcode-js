@@ -9,12 +9,12 @@
 <br />
 
 <div align="center">
-  <img src="https://img.shields.io/github/languages/top/rafaelq80/projeto-mario-kart-race?style=flat-square" />
-  <img src="https://img.shields.io/github/repo-size/rafaelq80/projeto-mario-kart-race?style=flat-square" />
-  <img src="https://img.shields.io/github/languages/count/rafaelq80/projeto-mario-kart-race?style=flat-square" />
-  <img src="https://img.shields.io/github/last-commit/rafaelq80/projeto-mario-kart-race?style=flat-square" />
-  <img src="https://img.shields.io/github/issues/rafaelq80/projeto-mario-kart-race?style=flat-square" />
-  <img src="https://img.shields.io/github/issues-pr/rafaelq80/projeto-mario-kart-race?style=flat-square" />
+  <img src="https://img.shields.io/github/languages/top/rafaelq80/projeto-qrcode-js?style=flat-square" />
+  <img src="https://img.shields.io/github/repo-size/rafaelq80/projeto-qrcode-js?style=flat-square" />
+  <img src="https://img.shields.io/github/languages/count/rafaelq80/projeto-qrcode-js?style=flat-square" />
+  <img src="https://img.shields.io/github/last-commit/rafaelq80/projeto-qrcode-js?style=flat-square" />
+  <img src="https://img.shields.io/github/issues/rafaelq80/projeto-qrcode-js?style=flat-square" />
+  <img src="https://img.shields.io/github/issues-pr/rafaelq80/projeto-qrcode-js?style=flat-square" />
   <img src="https://img.shields.io/badge/status-conclu%C3%ADdo-brightgreen" alt="Status: Concluído">
 
 </div>
@@ -23,14 +23,14 @@ Utilitário CLI (Command Line Interface) em **Node.js** para **geração de QR C
 
 <br />
 
-- ## ⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
-  - 📎 **Gerar QR Code** a partir de um link:
-    - Exibição no terminal ou como imagem `.png`
-    - Salva automaticamente na pasta `public/` com nome baseado no domínio
-  - 🔒 **Gerar senha segura** com critérios personalizáveis:
-    - Letras maiúsculas, minúsculas, números, símbolos e tamanho ajustável
-  - 🧭 **Menu interativo** e fácil de usar direto no terminal
+- 📎 **Gerar QR Code** a partir de um link:
+  - Exibição no terminal ou como imagem `.png`
+  - Salva automaticamente na pasta `public/` com nome baseado no domínio
+- 🔒 **Gerar senha segura** com critérios personalizáveis:
+  - Letras maiúsculas, minúsculas, números, símbolos e tamanho ajustável
+- 🧭 **Menu interativo** e fácil de usar direto no terminal
 
 <br />
 
@@ -39,8 +39,8 @@ Utilitário CLI (Command Line Interface) em **Node.js** para **geração de QR C
 ### 1. Clone o repositório
 
 ```bash
-git clone <url-do-repositorio>
-cd projeto-qrcode
+git clone https://github.com/rafaelq80/projeto-qrcode-js
+cd projeto-qrcode-js
 ```
 
 ### 2. Instale as dependências
@@ -70,7 +70,8 @@ PASSWORD_LENGTH=12
 Execute o projeto via terminal:
 
 ```bash
-node src/index.js
+cd src
+node index.js
 ```
 
 ### Menu Interativo
